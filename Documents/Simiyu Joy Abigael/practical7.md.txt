@@ -1,0 +1,46 @@
+SIMIYU JOY ABIGAEL
+EMAIL- joy.simiyu@womentechsters.org
+PRACTICAL ACTIVITY 7:
+
+PART 1: Port scanning using nmap
+1.1 ICMP ping = sudo nmap -sP -PE 10.0.2.15/24
+
+1.2 TCP ping = nmap -p 389 10.0.2.15/24
+
+
+1.3 TCP connect = nmap -sT 10.0.2.15
+nmap -sT 10.0.2.0/24
+
+1.4 Stealth scanning = sudo nmap -sS 10.0.2.15
+
+1.5 UDP scanning = sudo nmap -sU 10.0.2.15
+
+1.6 Stealth scanning = sudo nmap -sF 10.0.2.15
+
+1.7 Vulnerabilities = vuln --script sudo nmap -v --script vuln 192.168.56.1
+
+#The vulnerabilites were:
+
+Slowloris DOS attack on ports 80, 135, 139, 443, etc. This is a denial of service attack. It uses partial HTTP requests to establish a connection between a single computer and the targeted server. It keeps these connections open, thus overwhelming the server, and rendering the server inaccessible to further requests bt the client. In other words, slowloris tries to keep many connections to the target web server open and hold them open as long as possible. It accomplishes this by opening connections to the target web server and sending a partial request. Periodically, it will send subsequent HTTP headers, adding to-but never completing-the request. Affected servers will keep these connections open, filling their maximum concurrent connection pool, eventually denying additional connection attempts from clients.
+Diffie-Hellman Key Exchange Insufficient Group Strength. This vulnerability allows for the logjam attack against the TLS protocol. The Logjam attack allows a man-in-the-middle attacker to downgrade vulnerable TLS connections to 512-bit export-grade cryptography. This allows the attacker to read and modify any data passed over the connection.
+
+PART 2: Cracking a hash:
+
+- I used hash-identifier to first find the Hash used, which was SHA-1 --> hash-identifier
+
+- From using a SHA1 decoder site, the password is: jrahyn+
+
+PART 3
+Public key encryption with openssl
+
+1 I first created a file that will later be encrypted, and typed in it. File = nano practical1.txt
+
+2 Generate the private rsa key and save it into a pem file = openssl genrsa -out privatekey.pem 2048
+
+3 To generate and save the corresponding public key into another pem file- = openssl rsa -in privatekey.pem -pubout -out publickey.pem
+
+4 Encrypt practical.txt with public key and store it in a new file called encpractical.txt = openssl rsautl -encrypt -in practical.txt -out encpractical.txt -inkey publickey.pem -pubin
+
+5 Decrypt "encpractical.txt" using the private key and store the decrypted text in decpractical.txt openssl rsautl -decrypt -in encpractical.txt -out decpractical.txt -inkey privatekey.pem
+
+6 Cat into decpractical.txt to compare with original file cat decpractical.txt
