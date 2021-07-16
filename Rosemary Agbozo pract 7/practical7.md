@@ -44,7 +44,7 @@ This vulnerability allows for the logjam attack against the TLS protocol. The Lo
 
 
 
-#PART 2: Cracking a hash-->
+# PART 2: Cracking a hash-->
 
 2. 1 I used hash-identifier to first find the Hash used, which was SHA-1  -->
 hash-identifier <!-- when it run, i pasted the hash string in it-->
@@ -55,7 +55,7 @@ hash-identifier <!-- when it run, i pasted the hash string in it-->
 <!-- Screenshot of result in folder-->
 
 
-#PART 3
+# PART 3
 
 #Public key encryption with openssl
 
